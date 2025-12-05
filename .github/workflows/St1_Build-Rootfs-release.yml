@@ -2,6 +2,14 @@ name: 💿 St1_Build-Rootfs-release
 on:
   workflow_dispatch:
     inputs:
+      build_version:
+        description: "请选择构建版本"
+        required: true
+        default: '20251128'
+        type: choice
+        options:
+          - '20251128'
+          - '20251121'
       network_settings:
         description: "请选择初始网络配置"
         required: true
@@ -11,11 +19,11 @@ on:
           - 'static'
           - 'dhcp'
       ipaddr:
-        description: '请输入管理IP（静态地址时必填）'
+        description: '请输入管理IP（选择static时必填）'
         required: true
         default: '192.168.5.88'
       gateway:
-        description: '请输入默认网关（静态地址时必填）'
+        description: '请输入默认网关（选择static时必填）'
         required: true
         default: '192.168.5.1'
 
@@ -61,7 +69,7 @@ jobs:
 
     - name: ⏬ 下载 ImageBuilder
       run: |
-        curl -L -o imagebuilder.tar.zst https://github.com/Kwonelee/iStoreOS-Actions/releases/download/iStoreOS-ImageBuilder/20251128-istoreos-imagebuilder-armsr-armv8.Linux-x86_64.tar.zst
+        curl -L -o imagebuilder.tar.zst https://github.com/Kwonelee/iStoreOS-Actions/releases/download/iStoreOS-ImageBuilder/${{ inputs.build_version }}-istoreos-imagebuilder-armsr-armv8.Linux-x86_64.tar.zst
         tar --use-compress-program=unzstd -xvf imagebuilder.tar.zst
         mv istoreos-imagebuilder-* imagebuilder
 
