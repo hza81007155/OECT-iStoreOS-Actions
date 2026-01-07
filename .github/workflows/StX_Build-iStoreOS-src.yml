@@ -182,6 +182,7 @@ on:
         options:
           - 5.15.y
           - 6.1.y
+          - 6.1.115
           - 6.6.y
           - 6.12.y
           - 6.6.115
@@ -207,7 +208,7 @@ jobs:
           echo "📦 正在下载预构建 rootfs"
           mkdir -p bin/targets/armsr/armv8
           curl -L -o bin/targets/armsr/armv8/openwrt-armvirt-64-default-rootfs.tar.gz \
-            https://github.com/Zane-E/OP-ARM/releases/download/ARMv8/openwrt-armsr-armv8-generic-rootfs.tar.gz
+            https://github.com/hza1128/amlogic-s9xxx-openwrt/releases/download/OpenWrt_lede_master_save_2026.01/openwrt-armsr-armv8-generic-rootfs.tar.gz
 
       - name: 🔍 查找rootfs.tar.gz所在路径
         id: find_rootfs
